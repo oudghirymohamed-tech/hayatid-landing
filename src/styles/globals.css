@@ -71,7 +71,7 @@ a {
 }
 
 .app-shell {
-    padding: 18px 0 32px;
+    padding: 0 0 32px;
 }
 
 main {
@@ -86,7 +86,7 @@ main {
 }
 
 .hero {
-    margin-top: 72px;
+    margin-top: 64px;
     background: var(--black-night);
     border-color: rgba(255, 255, 255, 0.12);
 }
@@ -434,28 +434,463 @@ main {
 }
 
 .lang-toggle {
-    position: fixed;
-    top: 12px;
-    right: 16px;
-    z-index: 50;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
-    padding: 6px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: rgba(250, 250, 250, 0.94);
-    color: var(--gray-text);
-    backdrop-filter: blur(6px);
+    display: none;
+    /* replaced by Navbar */
 }
 
 .lang-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--gray-muted);
+    display: none;
 }
 
+/* ── Navbar ──────────────────────────────────────────────────────────────── */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(13, 13, 13, 0.97);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+.navbar-inner {
+    width: min(1120px, calc(100vw - 24px));
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 64px;
+}
+
+.navbar-logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar-logo img {
+    height: 26px;
+    width: auto;
+    display: block;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+    padding-inline-start: 20px;
+}
+
+.navbar-links a {
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.navbar-links a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar-actions {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-nav-primary {
+    background: var(--orange-alert);
+    border: 1px solid var(--orange-alert);
+    color: #ffffff;
+    padding: 7px 15px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-nav-primary:hover {
+    background: #e07a30;
+    border-color: #e07a30;
+}
+
+.btn-nav-secondary {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 7px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-nav-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+}
+
+.btn-nav-active {
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+.navbar-lang {
+    display: flex;
+    gap: 4px;
+    padding-inline-start: 10px;
+    margin-inline-start: 4px;
+    border-inline-start: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.navbar-lang button {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-sm);
+    padding: 4px 9px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.navbar-lang button.active {
+    background: #ffffff;
+    color: var(--black-night);
+    border-color: #ffffff;
+}
+
+.navbar-lang button:hover:not(.active) {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Auth pages (Login / Create Account) ──────────────────────────────────── */
+
+.auth-page {
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    background: var(--off-white);
+}
+
+.auth-card {
+    width: min(480px, 100%);
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px 36px;
+}
+
+.auth-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--gray-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.auth-back::before {
+    content: "\2190";
+}
+
+[dir="rtl"] .auth-back::before {
+    content: "\2192";
+}
+
+.auth-back:hover {
+    color: var(--blue-2ks);
+}
+
+.auth-logo {
+    display: inline-flex;
+    background: var(--black-night);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    margin-bottom: 24px;
+}
+
+.auth-logo img {
+    height: 26px;
+    width: auto;
+    display: block;
+}
+
+.auth-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--black-night);
+    margin: 0 0 6px;
+}
+
+.auth-subtitle {
+    color: var(--gray-muted);
+    margin: 0 0 24px;
+    font-size: 14px;
+}
+
+.auth-form {
+    display: grid;
+    gap: 14px;
+}
+
+.auth-field {
+    display: grid;
+    gap: 6px;
+}
+
+.auth-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black-night);
+}
+
+.auth-field input {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    background: #ffffff;
+    color: var(--black-night);
+    font-size: 15px;
+    transition: border-color 0.15s ease;
+}
+
+.auth-field input:focus {
+    outline: none;
+    border-color: var(--blue-2ks);
+    box-shadow: 0 0 0 3px rgba(10, 47, 103, 0.1);
+}
+
+.auth-submit {
+    width: 100%;
+    margin-top: 6px;
+    padding: 13px 20px;
+    font-size: 15px;
+    justify-content: center;
+}
+
+.auth-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 32px 0;
+    text-align: center;
+}
+
+.auth-success p {
+    color: var(--gray-text);
+    margin: 0;
+}
+
+.auth-success-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(26, 138, 58, 0.12);
+    color: var(--green-action);
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.auth-success-icon.large {
+    width: 80px;
+    height: 80px;
+    font-size: 38px;
+    margin-inline: auto;
+    margin-bottom: 4px;
+}
+
+.auth-switch {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--gray-muted);
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+.auth-switch a {
+    color: var(--blue-2ks);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+/* ── Step wizard ──────────────────────────────────────────────────────────── */
+
+.step-progress {
+    display: flex;
+    gap: 8px;
+    margin: 14px 0 24px;
+}
+
+.step-dot {
+    height: 4px;
+    flex: 1;
+    border-radius: 999px;
+    background: var(--border);
+    transition: background-color 0.3s ease;
+}
+
+.step-dot.active {
+    background: var(--blue-2ks);
+}
+
+.step-dot.done {
+    background: var(--green-action);
+}
+
+.step-content {
+    display: grid;
+    gap: 16px;
+}
+
+.step-success {
+    text-align: center;
+    justify-items: center;
+    padding: 16px 0;
+}
+
+.step-icon {
+    font-size: 38px;
+    line-height: 1;
+}
+
+.step-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--black-night);
+    margin: 0;
+}
+
+.step-instruction {
+    color: var(--gray-muted);
+    font-size: 14px;
+    margin: 0;
+}
+
+.field-error {
+    color: var(--red-emergency);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.field-help {
+    color: var(--gray-muted);
+    font-size: 12px;
+}
+
+/* ── NFC visual area ─────────────────────────────────────────────────────── */
+
+.nfc-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 130px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-md);
+    background: var(--off-white);
+    gap: 12px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.nfc-visual.nfc-scanning {
+    border-color: rgba(10, 47, 103, 0.35);
+}
+
+.nfc-visual.nfc-verified,
+.nfc-visual.nfc-connected {
+    border-color: rgba(26, 138, 58, 0.35);
+    background: rgba(26, 138, 58, 0.04);
+}
+
+.nfc-trigger {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 22px;
+    background: #ffffff;
+    color: var(--blue-2ks);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+}
+
+.nfc-trigger:hover {
+    border-color: var(--blue-2ks);
+}
+
+.nfc-scanning {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--blue-2ks);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.nfc-pulse {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(10, 47, 103, 0.18);
+    animation: nfc-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes nfc-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.35);
+        opacity: 0.45;
+    }
+}
+
+.nfc-verified {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--green-action);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* (legacy lang-options - kept for reference, not rendered) */
 .lang-options {
     display: flex;
     gap: 6px;
@@ -670,6 +1105,20 @@ main {
     right: auto;
 }
 
+[dir="rtl"] .navbar-links {
+    padding-inline-start: 0;
+    padding-inline-end: 20px;
+}
+
+[dir="rtl"] .navbar-lang {
+    border-inline-start: none;
+    border-inline-end: 1px solid rgba(255, 255, 255, 0.12);
+    padding-inline-start: 0;
+    padding-inline-end: 10px;
+    margin-inline-start: 0;
+    margin-inline-end: 4px;
+}
+
 [dir="rtl"] .problem-stat-label,
 [dir="rtl"] .problem-hook,
 [dir="rtl"] .solution-step-card,
@@ -713,6 +1162,10 @@ main {
     .lang-toggle {
         min-width: 250px;
     }
+
+    .navbar-links {
+        display: flex;
+    }
 }
 
 @media (max-width: 767px) {
@@ -739,5 +1192,27 @@ main {
     [dir="rtl"] .lang-toggle {
         left: 10px;
         right: auto;
+    }
+
+    .navbar-links {
+        display: none;
+    }
+
+    .navbar-inner {
+        height: 56px;
+    }
+
+    .hero {
+        margin-top: 56px;
+    }
+
+    .btn-nav-primary,
+    .btn-nav-secondary {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .auth-card {
+        padding: 28px 20px;
     }
 }

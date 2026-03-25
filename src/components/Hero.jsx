@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Hero({ content }) {
     return (
         <section className="hero" id="top">
@@ -19,9 +21,9 @@ function Hero({ content }) {
                         <a className="btn btn-primary" href="#waitlist">
                             {content.ctaPrimary}
                         </a>
-                        <a className="btn btn-secondary" href="/demo.html" target="_blank" rel="noreferrer">
+                        <Link className="btn btn-secondary" to="/create-account">
                             {content.ctaSecondary}
-                        </a>
+                        </Link>
                     </div>
                     <p>{content.eventNote}</p>
                 </div>
