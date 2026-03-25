@@ -1,0 +1,16 @@
+:root {
+    --red-emergency: #C0392B;
+    --green-action: #1A8A3A;
+    --black-night: #0D0D0D;
+    --blue-2ks: #0A2F67;
+    --white-soft: #F2F3F5;
+    --orange-alert: #FF9149;
+    --off-white: #FAFAFA;
+    --gray-text: #444444;
+    --gray-muted: #888888;
+    --border: rgba(0, 0, 0, 0.08);
+    --font-sans: "Inter", "Noto Sans Arabic", sans-serif;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+}
