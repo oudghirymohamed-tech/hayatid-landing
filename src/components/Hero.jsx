@@ -25,6 +25,14 @@ function Hero({ content }) {
                             {content.ctaSecondary}
                         </Link>
                     </div>
+                    <figure className="hero-photo-wrap">
+                        <img
+                            className="hero-photo"
+                            src="/hero-photo.jpeg"
+                            alt="HayatID healthcare identity card in use"
+                            loading="lazy"
+                        />
+                    </figure>
                     <p>{content.eventNote}</p>
                 </div>
                 <div className="hero-image">
